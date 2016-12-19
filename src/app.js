@@ -9,6 +9,6 @@ const data = [
 
 const containerId = 'svg';
 
-let c = new Coins({ data, containerId });
+let c = new Coins({ data, containerId, width: 1000, height: 300 });
 
 window.onload = c.init();

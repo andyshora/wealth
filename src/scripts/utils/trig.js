@@ -18,11 +18,12 @@ class Trig {
     // so on the y axis, 0 and 1 will evaluate to 0,
     // and 0.5 will evaluate to the highest y value
     const theta = t * 180;
-    console.log('theta', theta);
     const thetaRadians = this.d2r(theta);
+    const xMid = (x1 - x0) / 2
     const radiusY = (0.5 + ((x1 - x0) / (2 * w))) * h;
+    const radiusX = xMid;
 
-    return { x: t * (x1 - x0), y: h - (radiusY * Math.sin(thetaRadians)) };
+    return { x: xMid - (radiusX * Math.cos(thetaRadians)), y: h - (radiusY * Math.sin(thetaRadians)) };
   }
 
   /**
