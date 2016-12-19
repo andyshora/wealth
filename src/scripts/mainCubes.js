@@ -27,7 +27,7 @@ class Main extends AbstractApplication {
 
         this.material = new THREE.MeshPhongMaterial({color: 0xffffff});
         let c;
-        for (let i = 0; i < 500; i++) {
+        for (let i = 0; i < 100; i++) {
             c = this.addCube();
             this.cubes.push(c);
             this._scene.add(c);
