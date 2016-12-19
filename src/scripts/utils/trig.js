@@ -12,10 +12,10 @@ class Trig {
     return degs * (Math.PI / 180);
   }
 
-  static getPositionOnScaledCurve({ x0, x1, w, h, t, tOffset = 0 }) {
+  static getPositionOnScaledCurve({ x0, x1, w, h, t, startOffset = 0, endOffset = 0 }) {
 
-    const availableT = (1 - tOffset);
-    const startingT = tOffset + (availableT * t);
+    const availableT = 1 - endOffset - startOffset;
+    const startingT = startOffset + (availableT * t);
 
     // t 0-1 will map to a theta value 0-180
     // so on the y axis, 0 and 1 will evaluate to 0,
@@ -23,7 +23,7 @@ class Trig {
     const theta = startingT * 180;
     const thetaRadians = this.d2r(theta);
     const xMid = (x1 - x0) / 2
-    const radiusY = (0.5 + ((x1 - x0) / (2 * w))) * h;
+    const radiusY = (0.4 + ((x1 - x0) / (2 * w))) * h;
     const radiusX = xMid;
 
     return { x: xMid - (radiusX * Math.cos(thetaRadians)), y: h - (radiusY * Math.sin(thetaRadians)) };
