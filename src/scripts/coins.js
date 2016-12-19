@@ -17,13 +17,13 @@ class Coins {
   init() {
     this._container = d3.select(`#${ this._containerId }`);
 
-    this._container.style('background', 'white');
+    this._container.style('background', 'black');
 
     for (let i = 0; i < this._data.length; i++) {
       const d = this._data[i];
 
-      for (let j = 0; j < d.wealthTn * 10; j++) {
-        this.plotCircle(j / (d.wealthTn * 10), d, COLORS[i]);
+      for (let j = 0; j < ~~d.wealthTn; j++) {
+        this.plotCircle(j / ~~d.wealthTn, d, COLORS[i]);
       }
     }
 
@@ -36,7 +36,8 @@ class Coins {
       x1: this._containerWidth * ((100 - data.populationPerc) / 100),
       w: this._containerWidth,
       h: this._containerHeight,
-      t
+      t,
+      tOffset: (100 - data.wealthPerc) * 0.01
     });
 
     this._container
